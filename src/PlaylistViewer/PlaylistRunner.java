@@ -3,7 +3,6 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Scanner;
 
-import SportsTeamStats.Player;
 public class PlaylistRunner {
 
 	public static void main(String[] args) throws IOException{
@@ -27,9 +26,6 @@ public class PlaylistRunner {
 		{
 			 if (! scan.nextLine().substring(0, 7).equals("Playlist"))	{
 				String[] things = (scan.nextLine().split(","));
-			 	artists[j] = things[j];
-			 	years[j] = things[j];
-			 	songs[j] = things[j];
 			 	j++;
 			 }
 		}
@@ -80,15 +76,23 @@ public class PlaylistRunner {
 			System.out.println("(A) Artist");
 			System.out.println("(B) Year");
 			System.out.println("Select a mode: ");
+			int i = 0;
 			String search = sc.nextLine();
 			if (search.equals("A"))
 			{
 				System.out.println("What artist would you like to search?");
 				String searchArtist = sc.nextLine();
-				System.out.println("Songs by " + searchArtist);
+				System.out.println("Songs by " + searchArtist + ":");
 				
+				while (scan.hasNextLine()) {
+					String[] songInfo = scan.nextLine().split(",");
+					if (songInfo[i + 2].equals(searchArtist))
+					{
+						System.out.println(songInfo[0]);
+					}
+					i++;
+				}
 			}
-			
 		}
 	}
 
