@@ -73,24 +73,61 @@ public class PlaylistRunner {
 		else if (mode.equals("C"))
 		{
 			System.out.println("What would you like to search by?");
-			System.out.println("(A) Artist");
-			System.out.println("(B) Year");
+			System.out.println("(A) Year");
+			System.out.println("(B) Artist");
 			System.out.println("Select a mode: ");
 			int i = 0;
 			String search = sc.nextLine();
 			if (search.equals("A"))
+			{
+				System.out.println("What year would you like to search?");
+				String searchYear = sc.nextLine();
+				System.out.println("Songs from " + searchYear + ":");
+				
+				while (scan.hasNextLine()) {
+					String v = scan.nextLine();
+					String[] songInfo = scan.nextLine().split(",");
+					play = v;
+					
+					if (!(v.substring(0, 8).equals("Playlist")))
+					{
+						SongSearcher song = new SongSearcher(songInfo[0], songInfo[1], songInfo[2]);
+						System.out.println(searchYear);
+						System.out.println(songInfo[2]);
+						
+						if (searchYear.equals(songInfo[2])) {
+							System.out.println(songInfo[0] + ", ");
+							System.out.print(songInfo[1] + ", ");
+							System.out.print(songInfo[2] + ", ");
+						}
+					}
+				}
+			}
+			else if (search.equals("B"))
 			{
 				System.out.println("What artist would you like to search?");
 				String searchArtist = sc.nextLine();
 				System.out.println("Songs by " + searchArtist + ":");
 				
 				while (scan.hasNextLine()) {
-					String[] songInfo = scan.nextLine().split(",");
-					if (songInfo[i + 2].equals(searchArtist))
+					String r = scan.nextLine();
+					String[] songKnfo = scan.nextLine().split(",");
+					play = r;
+					
+					if (!(r.substring(0, 8).equals("Playlist")))
 					{
-						System.out.println(songInfo[0]);
+						SongSearcher song = new SongSearcher(songKnfo[0], songKnfo[1], songKnfo[2]);
+						for (int m = 0; m < 60; m++)
+						{
+							System.out.println(songKnfo[2]);
+						}
+						
+						if (searchArtist.equals(songKnfo[2])) {
+							System.out.println(songKnfo[0] + ", ");
+							System.out.print(songKnfo[1] + ", ");
+							System.out.print(songKnfo[2] + ", ");
+						}
 					}
-					i++;
 				}
 			}
 		}

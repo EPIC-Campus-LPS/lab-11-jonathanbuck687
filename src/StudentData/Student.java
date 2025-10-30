@@ -6,12 +6,12 @@ public class Student {
 	private int history;
 	private int english;
 	private int compSci;
-	public Student(int m, int s, int h, int e, int c)
+	public Student(String m, String s, String h, String e, String c)
 	{
-		math = m;
-		science = s;
-		history = h;
-		english = e;
-		compSci = c;
+		math = Integer.parseInt(m);
+		science = Integer.parseInt(s);
+		history = Integer.parseInt(h);
+		english = Integer.parseInt(e);
+		compSci = Integer.parseInt(c);
 	}
 }
